@@ -4,7 +4,7 @@ require 'sidekiq/logger'
 module Sidekiq
   class Logger
     module Formatters
-      class ExpandedJSON < Sidekiq::Logger::Formatters::JSON
+      class ExpandedJSON < Sidekiq::Logger::Formatters::Base
         def call(severity, time, program_name, message)
           {
             '@timestamp' => time.utc.iso8601,
