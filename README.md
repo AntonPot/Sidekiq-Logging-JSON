@@ -46,9 +46,11 @@ $ gem install sidekiq-logging-json
 Add this to your Sidekiq configuration:
 
 ```ruby
-require 'sidekiq/logging/json'
+require 'sidekiq/logger'
 
-Sidekiq.logger.formatter = Sidekiq::Logging::Json::Logger.new
+Sidekiq.configure_server do |config|
+  config.log_formatter = Sidekiq::Logger::Formatters::ExpandedJSON.new
+end
 ```
 
 ## Contributing
