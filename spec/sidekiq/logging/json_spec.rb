@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe "Sidekiq::Logging::Json" do
+describe 'Sidekiq::Logger::Formatters::JSON::V1' do
   subject do
-    logger = Sidekiq::Logging::Json::Logger.new
+    logger = Sidekiq::Logger::Formatters::JSON::V1.new
     result = logger.call(severity, time, program_name, logentry)
     JSON.parse(result)
   end
@@ -77,4 +77,8 @@ describe "Sidekiq::Logging::Json" do
     it { expect(status).to eq("dead") }
     it { expect(run_time).to eq(nil) }
   end
+end
+
+describe 'Sidekiq::Logger::Formatters::JSON::V2' do
+  pending 'Needs implementation'
 end
