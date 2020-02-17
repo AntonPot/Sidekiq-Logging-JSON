@@ -1,5 +1,6 @@
 require 'sidekiq'
 require 'sidekiq/logger'
+require 'active_support/core_ext/hash/indifferent_access'
 
 module Sidekiq
   class Logger
@@ -82,7 +83,7 @@ module Sidekiq
               status: nil,
               severity: severity,
               run_time: nil
-            }.merge(process_message(message)).to_json + "\n"
+            }.merge(process_message(message)).stringify_keys.to_json + "\n"
           end
         end
       end
